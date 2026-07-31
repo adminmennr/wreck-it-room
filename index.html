@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KZPF8P8R');</script>
+<!-- End Google Tag Manager -->
+
+<title>Rage Room Virginia Beach | Smash Something, Feel Better</title>
+<meta name="description" content="Virginia Beach's rage room &amp; blacklight paint splatter studio. Smash a full crate of glass and electronics in full safety gear. From $40. Book online in 60 seconds.">
+<meta name="theme-color" content="#0A0A0B">
+<link rel="icon" href="assets/favicon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Rage Room Virginia Beach | Wreck It Room">
+<meta property="og:description" content="20 minutes. A crate of breakables. Full safety gear. From $40. Book online in 60 seconds.">
+<meta property="og:image" content="assets/hero.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+<style>
+/* ============================== TOKENS ============================== */
+:root{
+  --ink:#0A0A0B;
+  --ink-2:#131316;
+  --ink-3:#1C1C21;
+  --line:rgba(244,240,232,.14);
+  --bone:#F4F0E8;
+  --bone-dim:#A9A49B;
+  --red:#E01B24;
+  --red-hot:#FF3B30;
+  --pink:#FF2EA6;
+  --cyan:#22E0FF;
+  --lime:#C6FF3D;
+
+  /* Cracked-glass texture: a branching crack network, generated so every
+     path stays inside the tile edges, which makes the 600px tile seamless.
+     Tune visibility via the group opacity below. */
+  --cracks:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cg fill='none' stroke='%23F4F0E8' stroke-linecap='round' stroke-linejoin='round' opacity='.16'%3E%3Cpath d='M188 191L173 218L162 229' stroke-width='.5' stroke-opacity='.45'/%3E%3Cpath d='M146 131L167 156L176 167L188 191L206 223' stroke-width='.75' stroke-opacity='.7'/%3E%3Cpath d='M212 75L211 37' stroke-width='.5' stroke-opacity='.45'/%3E%3Cpath d='M170 120L192 92L212 75L240 56' stroke-width='.75' stroke-opacity='.7'/%3E%3Cpath d='M236 103L259 114L289 118' stroke-width='.75' stroke-opacity='.7'/%3E%3Cpath d='M83 137L107 136L146 131L170 120L200 118L236 103L266 91L280 83' stroke-width='1.1' stroke-opacity='1'/%3E%3Cpath d='M60 337L39 308L29 276L25 259' stroke-width='.75' stroke-opacity='.7'/%3E%3Cpath d='M133 335L94 334L60 337L31 342' stroke-width='1.1' stroke-opacity='1'/%3E%3Cpath d='M98 533L108 571' stroke-width='1.1' stroke-opacity='1'/%3E%3Cpath d='M315 85L336 84L353 80L369 76L399 61' stroke-width='.75' stroke-opacity='.7'/%3E%3Cpath d='M259 61L293 73L315 85L329 92L350 98L382 114L413 130L426 139' stroke-width='1.1' stroke-opacity='1'/%3E%3Cpath d='M177 319L169 331L163 351L144 380L134 412L134 449' stroke-width='.75' stroke-opacity='.7'/%3E%3Cpath d='M120 251L154 245L184 243' stroke-width='.5' stroke-opacity='.45'/%3E%3Cpath d='M143 325L128 295L120 272L120 251L110 223' stroke-width='.75' stroke-opacity='.7'/%3E%3Cpath d='M47 307L66 275L93 252' stroke-width='.5' stroke-opacity='.45'/%3E%3Cpath d='M107 336L75 328L47 307' stroke-width='.75' stroke-opacity='.7'/%3E%3Cpath d='M90 341L67 325L38 306' stroke-width='.75' stroke-opacity='.7'/%3E%3Cpath d='M250 293L212 304L177 319L143 325L107 336L90 341L58 340L34 339' stroke-width='1.1' stroke-opacity='1'/%3E%3Cpath d='M278 466L258 468L232 469L216 465' stroke-width='.75' stroke-opacity='.7'/%3E%3Cpath d='M218 444L188 457L165 469' stroke-width='.5' stroke-opacity='.45'/%3E%3Cpath d='M256 442L235 441L218 444' stroke-width='.75' stroke-opacity='.7'/%3E%3Cpath d='M215 398L216 375L206 338' stroke-width='.75' stroke-opacity='.7'/%3E%3Cpath d='M166 391L136 414L109 438' stroke-width='.5' stroke-opacity='.45'/%3E%3Cpath d='M202 384L185 389L166 391' stroke-width='.75' stroke-opacity='.7'/%3E%3Cpath d='M303 516L292 492L278 466L256 442L235 417L215 398L202 384' stroke-width='1.1' stroke-opacity='1'/%3E%3Cpath d='M434 236L404 236L389 241' stroke-width='.5' stroke-opacity='.45'/%3E%3Cpath d='M472 255L450 246L434 236' stroke-width='.75' stroke-opacity='.7'/%3E%3Cpath d='M523 143L520 159L504 188L495 225L485 244L472 255L449 280' stroke-width='1.1' stroke-opacity='1'/%3E%3Cpath d='M518 321L541 325L574 317' stroke-width='1.1' stroke-opacity='1'/%3E%3Cpath d='M540 545L522 576' stroke-width='1.1' stroke-opacity='1'/%3E%3C/g%3E%3C/svg%3E");
+
+  --shell:min(1180px,100% - 2.5rem);
+  --r:14px;
+  --display:'Anton',Impact,'Haettenschweiler','Arial Narrow Bold',sans-serif;
+  --body:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+/* scroll-padding keeps anchored sections clear of the sticky header
+   (header = logo height + .7rem padding top/bottom) */
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:92px}
+@media(max-width:640px){html{scroll-padding-top:80px}}
+body{
+  margin:0;color:var(--bone);
+  background-color:var(--ink);background-image:var(--cracks);
+  font-family:var(--body);font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+
+h1,h2,h3,.display{
+  font-family:var(--display);font-weight:400;line-height:.92;
+  letter-spacing:.01em;text-transform:uppercase;margin:0;
+}
+h1{font-size:clamp(2.9rem,8.5vw,6rem)}
+h2{font-size:clamp(2rem,5.2vw,3.6rem)}
+h3{font-size:clamp(1.25rem,2.4vw,1.7rem)}
+p{margin:0 0 1rem}
+
+.shell{width:var(--shell);margin-inline:auto}
+.section{padding:clamp(4rem,9vw,7.5rem) 0}
+/* alternating darker band, textured to match the body */
+.alt{
+  background-color:var(--ink-2);background-image:var(--cracks);
+  border-block:1px solid var(--line);
+}
+/* ambient brand glow, layered above the grain */
+.glow-top{
+  background-image:
+    radial-gradient(78% 58% at 50% -8%,rgba(224,27,36,.13),transparent 62%),
+    var(--cracks);
+}
+.glow-mid{
+  background-image:
+    radial-gradient(62% 60% at 50% 50%,rgba(255,46,166,.09),transparent 68%),
+    var(--cracks);
+}
+.eyebrow{
+  font-size:.72rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--red-hot);margin:0 0 1rem;
+}
+.lede{font-size:clamp(1.05rem,1.9vw,1.25rem);color:var(--bone-dim);max-width:60ch}
+.center{text-align:center}
+.center .lede{margin-inline:auto}
+
+:focus-visible{outline:3px solid var(--cyan);outline-offset:3px;border-radius:4px}
+
+/* ============================== BUTTONS ============================== */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.55rem;
+  font-family:var(--display);font-size:1.05rem;letter-spacing:.045em;text-transform:uppercase;
+  padding:1.05rem 2rem;border-radius:999px;border:2px solid transparent;
+  text-decoration:none;cursor:pointer;transition:transform .12s ease,box-shadow .2s ease,background .2s ease;
+  white-space:nowrap;
+}
+.btn:active{transform:translateY(1px)}
+.btn-primary{
+  background:var(--red);color:#fff;
+  box-shadow:0 10px 30px -10px rgba(224,27,36,.85);
+}
+.btn-primary:hover{background:var(--red-hot);box-shadow:0 14px 38px -10px rgba(255,59,48,.95)}
+.btn-ghost{border-color:var(--line);color:var(--bone);background:var(--ink-3)}
+.btn-ghost:hover{border-color:var(--bone);background:#26262E}
+.btn-sm{padding:.7rem 1.25rem;font-size:.9rem}
+.btn-block{width:100%}
+
+/* ============================== HEADER ============================== */
+.hdr{
+  position:sticky;top:0;z-index:60;
+  background:rgba(10,10,11,.78);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.7rem 0}
+.hdr img{height:56px;width:auto}
+@media(max-width:640px){.hdr img{height:44px}}
+.hdr-actions{display:flex;align-items:center;gap:.6rem}
+
+/* ============================== HERO ============================== */
+.hero{position:relative;isolation:isolate;overflow:hidden}
+.hero-media{position:absolute;inset:0;z-index:-2}
+.hero-media img,.hero-media video{width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.hero::after{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:
+    linear-gradient(180deg,rgba(10,10,11,.72) 0%,rgba(10,10,11,.55) 38%,rgba(10,10,11,.94) 88%,var(--ink) 100%),
+    radial-gradient(110% 75% at 50% 45%,rgba(10,10,11,.3),rgba(10,10,11,.88) 100%);
+}
+.hero-in{
+  padding:clamp(3.5rem,10vw,7rem) 0 clamp(2.5rem,5vw,4rem);
+  max-width:780px;margin-inline:auto;text-align:center;
+}
+.hero h1{margin:0 0 1.25rem;text-shadow:0 6px 40px rgba(0,0,0,.6)}
+.hero h1 em{font-style:normal;color:var(--red-hot);display:block}
+.hero p{
+  font-size:clamp(1.05rem,2.1vw,1.3rem);color:#DCD7CE;
+  max-width:56ch;margin:0 auto 1.9rem;
+  text-wrap:balance;   /* splits the two lines evenly instead of a long/short pair */
+}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;justify-content:center}
+.price-chip{
+  display:inline-flex;align-items:baseline;gap:.45rem;
+  background:rgba(244,240,232,.1);border:1px solid var(--line);
+  padding:.5rem 1rem;border-radius:999px;font-size:.9rem;color:var(--bone-dim);
+  margin-bottom:1.5rem;
+}
+.price-chip b{font-family:var(--display);font-size:1.35rem;color:var(--bone)}
+
+.trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(10,10,11,.6)}
+.trust ul{
+  list-style:none;margin:0;padding:1rem 0;display:flex;flex-wrap:wrap;
+  gap:.6rem 2.2rem;justify-content:center;
+  font-size:.83rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--bone-dim);
+}
+.trust li{display:flex;align-items:center;gap:.5rem}
+.trust svg{width:16px;height:16px;color:var(--red-hot);flex:none}
+
+/* ============================== CARDS ============================== */
+.grid{display:grid;gap:1.25rem}
+.g-2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.g-3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.g-4{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+
+.card{
+  /* solid: content surfaces stay opaque so the section texture never
+     reads through the card face or the buttons sitting on it */
+  background-color:var(--ink-2);
+  background-image:linear-gradient(180deg,var(--ink-2),var(--ink));
+  border:1px solid var(--line);border-radius:var(--r);padding:1.75rem;
+  position:relative;overflow:hidden;
+}
+.card h3{margin-bottom:.6rem}
+.card p{color:var(--bone-dim);font-size:.97rem}
+
+/* experience cards */
+.xp{padding:0;display:flex;flex-direction:column}
+/* 4/3 is the compromise ratio: rage.jpg is landscape (1.23), radiant.png is
+   portrait (0.85). Crop focus is tuned per card so neither loses its subject. */
+.xp-img{aspect-ratio:4/3;background:var(--ink-3);position:relative;overflow:hidden}
+.xp-img img{width:100%;height:100%;object-fit:cover;position:relative;z-index:1}
+.xp-rage  .xp-img img{object-position:center 45%}
+.xp-paint .xp-img img{object-position:center 22%}   /* keeps the raised arms in frame */
+.xp-fallback{
+  position:absolute;inset:0;z-index:0;display:grid;place-items:center;
+  font-family:var(--display);font-size:2.4rem;color:rgba(244,240,232,.2);letter-spacing:.05em;
+}
+.xp-rage .xp-fallback{background:radial-gradient(120% 120% at 30% 20%,#3A0D10,#0F0F12)}
+.xp-paint .xp-fallback{background:radial-gradient(120% 120% at 70% 20%,#2A0B3D,#0B0F1A)}
+.xp-body{padding:1.6rem;display:flex;flex-direction:column;flex:1}
+.xp-meta{
+  display:flex;flex-wrap:wrap;gap:.45rem;margin:0 0 1rem;padding:0;list-style:none;
+}
+.xp-meta li{
+  font-size:.76rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  background:var(--ink-3);border:1px solid var(--line);
+  padding:.32rem .7rem;border-radius:999px;color:var(--bone-dim);
+}
+.xp-body .btn{margin-top:auto}
+.xp-paint h3{color:var(--pink)}
+.xp-paint .xp-meta li{border-color:rgba(255,46,166,.3)}
+
+/* ============================== PRICING ============================== */
+.toggle{
+  display:inline-flex;padding:.3rem;gap:.25rem;margin:0 auto 2.5rem;
+  background:var(--ink-2);border:1px solid var(--line);border-radius:999px;
+}
+.toggle button{
+  font-family:var(--display);font-size:.95rem;letter-spacing:.05em;text-transform:uppercase;
+  padding:.7rem 1.5rem;border-radius:999px;border:0;background:transparent;
+  color:var(--bone-dim);cursor:pointer;transition:.18s;
+}
+.toggle button[aria-selected="true"]{background:var(--red);color:#fff}
+.toggle button.paint[aria-selected="true"]{background:var(--pink);color:#0A0A0B}
+
+.tier{display:flex;flex-direction:column;text-align:center;padding:1.9rem 1.4rem}
+.tier .name{
+  font-size:.78rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--bone-dim);margin-bottom:.9rem;
+}
+.tier .amt{font-family:var(--display);font-size:3.2rem;line-height:1;margin-bottom:.3rem}
+.tier .unit{font-size:.85rem;color:var(--bone-dim);margin-bottom:1.2rem}
+.tier .inc{
+  list-style:none;margin:0 0 1.5rem;padding:1.2rem 0 0;border-top:1px solid var(--line);
+  font-size:.9rem;color:var(--bone-dim);text-align:left;display:grid;gap:.5rem;
+}
+.tier .inc li{display:flex;gap:.55rem;align-items:flex-start}
+.tier .inc li::before{content:"›";color:var(--red-hot);font-weight:800;flex:none}
+.tier .btn{margin-top:auto}
+.tier.featured{border-color:var(--red);box-shadow:0 0 0 1px var(--red),0 24px 60px -30px rgba(224,27,36,.7)}
+.tier .flag{
+  position:absolute;top:0;right:0;background:var(--red);color:#fff;
+  font-size:.66rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;
+  padding:.35rem .8rem;border-bottom-left-radius:10px;
+}
+[data-pricing="paint"] .tier .inc li::before{color:var(--pink)}
+[data-pricing="paint"] .tier.featured{border-color:var(--pink);box-shadow:0 0 0 1px var(--pink),0 24px 60px -30px rgba(255,46,166,.7)}
+[data-pricing="paint"] .tier .flag{background:var(--pink);color:#0A0A0B}
+[data-pricing="paint"] .btn-primary{background:var(--pink);color:#0A0A0B;box-shadow:0 10px 30px -10px rgba(255,46,166,.85)}
+
+.fineprint{font-size:.85rem;color:var(--bone-dim);margin-top:1.75rem;text-align:center}
+
+/* ============================== STEPS ============================== */
+.step{position:relative}
+.step .num{
+  display:block;margin-bottom:.75rem;
+  font-family:var(--display);font-size:3.6rem;line-height:1;
+  color:transparent;-webkit-text-stroke:2px rgba(224,27,36,.55);
+}
+.step h3{margin-top:0}
+
+/* ============================== PROOF ============================== */
+/* ============================== OCCASIONS ============================== */
+.occ{display:flex;flex-wrap:wrap;gap:.65rem;justify-content:center}
+.occ span{
+  background:var(--ink-3);
+  border:1px solid var(--line);border-radius:999px;padding:.65rem 1.25rem;
+  font-family:var(--display);font-size:1rem;letter-spacing:.04em;color:var(--bone-dim);
+  transition:.18s;
+}
+.occ span:nth-child(3n+1):hover{border-color:var(--red);color:var(--bone)}
+.occ span:nth-child(3n+2):hover{border-color:var(--cyan);color:var(--bone)}
+.occ span:nth-child(3n+3):hover{border-color:var(--pink);color:var(--bone)}
+
+/* ============================== FAQ ============================== */
+.faq{max-width:820px;margin-inline:auto}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{
+  list-style:none;cursor:pointer;padding:1.4rem 2.5rem 1.4rem 0;position:relative;
+  font-family:var(--display);font-size:clamp(1.05rem,2vw,1.3rem);letter-spacing:.02em;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"+";position:absolute;right:.4rem;top:50%;transform:translateY(-50%);
+  font-size:1.6rem;color:var(--red-hot);transition:transform .2s;
+}
+.faq details[open] summary::after{content:"–"}
+.faq .ans{padding:0 2.5rem 1.5rem 0;color:var(--bone-dim);font-size:.98rem}
+.faq .ans p:last-child{margin-bottom:0}
+
+/* ============================== BOOKING ============================== */
+.book{background-color:var(--ink-2);background-image:var(--cracks);border-block:1px solid var(--line)}
+.tabs{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-bottom:1.75rem}
+.tabs button{
+  font-family:var(--display);font-size:.92rem;letter-spacing:.05em;text-transform:uppercase;
+  padding:.75rem 1.35rem;border-radius:999px;cursor:pointer;transition:.18s;
+  background:var(--ink-3);border:1px solid var(--line);color:var(--bone-dim);
+}
+.tabs button:hover{border-color:var(--bone);color:var(--bone)}
+.tabs button[aria-selected="true"]{background:var(--red);border-color:var(--red);color:#fff}
+.embed{
+  background:#fff;border-radius:var(--r);overflow:hidden;
+  border:1px solid var(--line);box-shadow:0 30px 80px -40px rgba(0,0,0,.9);
+  padding:1rem 1.1rem;
+}
+/* only reserve height once the widget has actually mounted, so the
+   loading/unconfigured state doesn't stack on top of an empty box */
+#bookeo_position:not(:empty){min-height:420px}
+.embed-note{font-size:.85rem;color:var(--bone-dim);text-align:center;margin-top:1rem}
+.embed-note a{color:var(--bone)}
+
+/* loading + not-yet-configured states inside the white panel */
+.embed-state{
+  min-height:420px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:1rem;text-align:center;color:#5B5766;padding:2rem 1.25rem;font-size:.95rem;
+}
+.embed-state[hidden]{display:none}
+.embed-state h4{
+  font-family:var(--display);font-size:1.35rem;color:#17141C;letter-spacing:.01em;
+}
+.embed-state p{max-width:46ch;margin:0}
+.spinner{
+  width:34px;height:34px;border-radius:50%;
+  border:3px solid rgba(224,27,36,.2);border-top-color:var(--red);
+  animation:spin .8s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.embed-state .btn-primary{color:#fff}
+.embed-code{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.85rem;
+  background:#F1EFF4;border:1px solid #DEDAE6;border-radius:8px;padding:.5rem .75rem;color:#17141C;
+}
+
+/* ============================== FOOTER ============================== */
+.ft{border-top:1px solid var(--line);padding:3.5rem 0 8rem;font-size:.95rem;color:var(--bone-dim)}
+.ft a{color:var(--bone);text-decoration:none}
+.ft a:hover{text-decoration:underline}
+.ft h4{
+  font-size:.75rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--bone);margin:0 0 .9rem;
+}
+.ft img{height:52px;width:auto;margin-bottom:1rem}
+.ft-grid{display:grid;gap:2.5rem;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+/* content-sized columns: a 1fr second column stretched the times to the far
+   edge of the (now much wider) footer column and opened a gap */
+.ft dl{margin:0;display:grid;grid-template-columns:auto auto;justify-content:start;gap:.35rem 1.5rem}
+.ft dt{font-weight:700;color:var(--bone)}
+.ft dd{margin:0;text-align:right;font-variant-numeric:tabular-nums}
+.legal{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--line);font-size:.83rem}
+
+/* ============================== STICKY CTA ============================== */
+.sticky{
+  position:fixed;left:0;right:0;bottom:0;z-index:70;
+  background:rgba(10,10,11,.94);backdrop-filter:blur(14px);
+  border-top:1px solid var(--line);
+  padding:.7rem 1.25rem calc(.7rem + env(safe-area-inset-bottom));
+  display:flex;gap:.6rem;align-items:center;
+  transform:translateY(110%);transition:transform .28s ease;
+}
+.sticky.show{transform:translateY(0)}
+.sticky .btn{flex:1}
+/* Mobile pattern only — desktop already has a persistent header CTA. */
+@media(min-width:900px){.sticky{display:none}}
+@media(min-width:900px){.ft{padding-bottom:3.5rem}}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KZPF8P8R"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- ========================= HEADER ========================= -->
+<header class="hdr">
+  <div class="shell hdr-in">
+    <a href="#top" aria-label="Wreck It Room home">
+      <img src="assets/logo.png" alt="Wreck It Room" width="161" height="56">
+    </a>
+    <div class="hdr-actions">
+      <a class="btn btn-primary btn-sm" href="#book" data-track="cta_header">Book Now</a>
+    </div>
+  </div>
+</header>
+
+<!-- ========================= HERO ========================= -->
+<section class="hero" id="top">
+  <div class="hero-media">
+    <!-- SWAP FOR VIDEO: replace <img> with the block below once you have a 6–10s muted loop.
+    <video autoplay muted loop playsinline poster="assets/hero.jpg">
+      <source src="assets/hero-loop.mp4" type="video/mp4">
+    </video> -->
+    <img src="assets/hero.jpg" alt="A person in red coveralls and a face shield smashing a television with a sledgehammer inside the Wreck It Room rage room" fetchpriority="high">
+  </div>
+  <div class="shell hero-in">
+    <p class="eyebrow">Virginia Beach · General Booth Blvd</p>
+    <h1>Smash Something.<em>Feel Better.</em></h1>
+    <p>Twenty minutes, a crate of glass and electronics, and a sledgehammer with your name on it. Zero cleanup.</p>
+    <div class="price-chip">Sessions from <b>$40</b> · book in 60 seconds</div>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#book" data-track="cta_hero">Book Your Session</a>
+      <a class="btn btn-ghost" href="#pricing" data-track="cta_hero_pricing">See Pricing</a>
+    </div>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="shell">
+    <ul>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Ages 14+</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Full safety gear provided</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Walk-ins welcome</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>10% military discount</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ========================= EXPERIENCES ========================= -->
+<section class="section glow-top" id="experiences">
+  <div class="shell">
+    <div class="center" style="margin-bottom:2.75rem">
+      <p class="eyebrow">Two rooms, two kinds of chaos</p>
+      <h2>Pick Your Poison</h2>
+    </div>
+
+    <div class="grid g-2">
+      <article class="card xp xp-rage">
+        <div class="xp-img">
+          <div class="xp-fallback" aria-hidden="true">RAGE</div>
+          <img src="assets/rage.jpg" width="1881" height="1533"
+               alt="A person in red coveralls and a face shield swinging a sledgehammer through a television in the rage room"
+               loading="lazy" decoding="async" onerror="this.remove()">
+        </div>
+        <div class="xp-body">
+          <h3>The Rage Room</h3>
+          <ul class="xp-meta">
+            <li>20 min</li><li>Up to 6</li><li>From $40</li>
+          </ul>
+          <p>Bats, crowbars and a crate packed with glass, electronics, toys and small appliances. Suit up in coveralls, gloves and a face shield helmet, plug in your music, and let the week out on something that deserves it.</p>
+          <a class="btn btn-primary btn-block" href="#book" data-book="rage" data-track="cta_xp_rage">Book The Rage Room</a>
+        </div>
+      </article>
+
+      <article class="card xp xp-paint">
+        <div class="xp-img">
+          <div class="xp-fallback" aria-hidden="true">GLOW</div>
+          <img src="assets/radiant.png" width="774" height="908"
+               alt="Four people covered head to toe in glowing neon paint under blacklight, arms raised mid-splatter"
+               loading="lazy" decoding="async" onerror="this.remove()">
+        </div>
+        <div class="xp-body">
+          <h3>Radiant Wreck</h3>
+          <ul class="xp-meta">
+            <li>15–20 min</li><li>Up to 6</li><li>From $40</li>
+          </ul>
+          <p>Blacklight paint splatter. Neon colours, brushes, loaded paint blasters and canvases, all glowing under UV. Same release, none of the broken glass, and you walk out with something you can actually hang on a wall.</p>
+          <a class="btn btn-primary btn-block" href="#book" data-book="paint" data-track="cta_xp_paint">Book Radiant Wreck</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= PRICING ========================= -->
+<section class="section alt" id="pricing">
+  <div class="shell">
+    <div class="center" style="margin-bottom:2rem">
+      <p class="eyebrow">No math, no surprises</p>
+      <h2>Flat Pricing</h2>
+      <p class="lede">One price for your whole group. Everything below includes gear, tools and cleanup.</p>
+    </div>
+
+    <div class="center">
+      <div class="toggle" role="tablist" aria-label="Choose experience pricing">
+        <button role="tab" id="tab-price-rage" aria-controls="panel-price" aria-selected="true" data-pricing-tab="rage">Rage Room</button>
+        <button class="paint" role="tab" id="tab-price-paint" aria-controls="panel-price" aria-selected="false" data-pricing-tab="paint">Radiant Wreck</button>
+      </div>
+    </div>
+
+    <div id="panel-price" role="tabpanel" aria-labelledby="tab-price-rage" data-pricing="rage">
+      <div class="grid g-4">
+        <article class="card tier">
+          <p class="name">Solo</p>
+          <div class="amt">$40</div>
+          <p class="unit">1 person · <span data-dur>20 min</span></p>
+          <ul class="inc">
+            <li>Full safety gear</li>
+            <li><span data-kit>One crate of breakables</span></li>
+            <li>Bluetooth speaker</li>
+          </ul>
+          <a class="btn btn-ghost btn-block" href="#book" data-book="rage" data-track="cta_tier_solo">Book</a>
+        </article>
+
+        <article class="card tier featured">
+          <span class="flag">Most booked</span>
+          <p class="name">Duo</p>
+          <div class="amt" data-amt-duo>$60</div>
+          <p class="unit">2 people · <span data-dur>20 min</span></p>
+          <ul class="inc">
+            <li>Gear for both of you</li>
+            <li><span data-kit>One crate of breakables</span></li>
+            <li>Date night / co-worker therapy</li>
+          </ul>
+          <a class="btn btn-primary btn-block" href="#book" data-book="rage" data-track="cta_tier_duo">Book</a>
+        </article>
+
+        <article class="card tier">
+          <p class="name">Squad</p>
+          <div class="amt" data-amt-squad>$140</div>
+          <p class="unit">Up to 6 people · <span data-dur>20 min</span></p>
+          <ul class="inc">
+            <li>Gear for all six</li>
+            <li><span data-kit>One crate of breakables</span></li>
+            <li>Bring your own playlist</li>
+          </ul>
+          <a class="btn btn-ghost btn-block" href="#book" data-book="rage" data-track="cta_tier_squad">Book</a>
+        </article>
+
+        <article class="card tier">
+          <p class="name">Private Party</p>
+          <div class="amt" data-amt-party>$350</div>
+          <p class="unit">Up to 10 people · 1 full hour</p>
+          <ul class="inc" data-inc-party>
+            <li>Private double room</li>
+            <li>Two crates of breakables</li>
+            <li>20 beer bottles</li>
+            <li>10 liquor / wine / champagne bottles</li>
+            <li>3 electronics (S, M &amp; L)</li>
+          </ul>
+          <a class="btn btn-ghost btn-block" href="#book" data-book="rage-group" data-track="cta_tier_party">Book</a>
+        </article>
+      </div>
+      <p class="fineprint">10% off for active duty and veterans with valid ID. Gift vouchers available. <a href="https://bookeo.com/wreckitroomvb/buyvoucher" target="_blank" rel="noopener" data-track="voucher" style="color:var(--bone)">Buy one here</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= HOW IT WORKS ========================= -->
+<section class="section" id="how">
+  <div class="shell">
+    <div class="center" style="margin-bottom:2.75rem">
+      <p class="eyebrow">Easier than you think</p>
+      <h2>How It Works</h2>
+    </div>
+    <div class="grid g-3">
+      <article class="card step">
+        <span class="num" aria-hidden="true">01</span>
+        <h3>Book Online</h3>
+        <p>Pick your room, your time and your group size right here on this page. Takes about a minute. Walk-ins are welcome too, but slots go fast on weekends.</p>
+      </article>
+      <article class="card step">
+        <span class="num" aria-hidden="true">02</span>
+        <h3>Gear Up</h3>
+        <p>Arrive 10 minutes early with a valid ID and closed-toe shoes. We hand you coveralls, heavy-duty gloves, protective eyewear and a face shield helmet.</p>
+      </article>
+      <article class="card step">
+        <span class="num" aria-hidden="true">03</span>
+        <h3>Wreck It</h3>
+        <p>Connect your phone to the speaker and go. Swing, smash, splatter, scream. When the timer stops, you walk out and we handle every last piece of glass.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= OCCASIONS ========================= -->
+<section class="section glow-mid" id="occasions">
+  <div class="shell center">
+    <p class="eyebrow">Any excuse works</p>
+    <h2 style="margin-bottom:1rem">Good Reasons To Break Things</h2>
+    <p class="lede" style="margin-bottom:2.5rem">Most people come in for one of these. All of them are valid.</p>
+    <div class="occ">
+      <span>Birthdays</span><span>Date Night</span><span>Bachelorette</span>
+      <span>Team Building</span><span>Military &amp; First Responders</span><span>Breakups</span>
+      <span>Divorce Parties</span><span>Rainy Beach Day</span><span>Teens 14+</span>
+      <span>Bad Weeks</span><span>Bachelor Parties</span><span>Just Because</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= BOOKING EMBED ========================= -->
+<section class="section book" id="book">
+  <div class="shell">
+    <div class="center" style="margin-bottom:2rem">
+      <p class="eyebrow">Live availability</p>
+      <h2>Book Your Session</h2>
+      <p class="lede">Pick a room below, then choose your date and time. You'll get instant confirmation.</p>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="Choose what to book">
+      <button role="tab" aria-selected="true"  aria-controls="bookeo_position" data-tab="rage">Rage Room</button>
+      <button role="tab" aria-selected="false" aria-controls="bookeo_position" data-tab="paint">Radiant Wreck</button>
+      <button role="tab" aria-selected="false" aria-controls="bookeo_position" data-tab="rage-group">Rage · Private Party</button>
+      <button role="tab" aria-selected="false" aria-controls="bookeo_position" data-tab="paint-group">Radiant · Private Party</button>
+    </div>
+
+    <!-- ------------------------------------------------------------------
+         BOOKEO WIDGET  (same approach as the Novel Escape LP)
+         Bookeo allows only ONE widget instance per page, so we keep a single
+         shared mount (#bookeo_position) and swap the product on demand.
+         Set BOOKEO_ACCOUNT in js/main.js — the `a=` value from
+         Bookeo → Settings → Online bookings → "Add booking to your website".
+         ------------------------------------------------------------------ -->
+    <div class="embed">
+      <div id="bookeo_position"></div>
+
+      <div class="embed-state" id="bookingLoading">
+        <div class="spinner" aria-hidden="true"></div>
+        <p>Loading live availability…</p>
+      </div>
+
+      <div class="embed-state" id="bookingUnconfigured" hidden>
+        <h4>Booking widget not connected yet</h4>
+        <p>Add your Bookeo account ID to <span class="embed-code">BOOKEO_ACCOUNT</span> in <span class="embed-code">js/main.js</span>. Until then, this button opens the hosted booking page so no booking is lost.</p>
+        <a class="btn btn-primary" href="https://bookeo.com/wreckitroomvb" target="_blank" rel="noopener" data-track="booking_hosted">Open Booking Page</a>
+      </div>
+    </div>
+    <p class="embed-note">Trouble with the booking window? <a href="https://bookeo.com/wreckitroomvb" target="_blank" rel="noopener" data-track="booking_fallback">Open it in a new tab</a>.</p>
+  </div>
+</section>
+
+<!-- ========================= FAQ ========================= -->
+<section class="section alt" id="faq">
+  <div class="shell">
+    <div class="center" style="margin-bottom:2.5rem">
+      <p class="eyebrow">Before you book</p>
+      <h2>Straight Answers</h2>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary>Is 20 minutes really enough?</summary>
+        <div class="ans"><p>It's longer than it sounds. Swinging a sledgehammer in coveralls is genuinely hard work. Most people are winded by minute twelve and grinning by minute fifteen. If you want a full hour, book the private party room.</p></div>
+      </details>
+      <details>
+        <summary>Is it safe?</summary>
+        <div class="ans"><p>Safety is the whole reason the room exists. Before you swing anything you'll gear up in full protective equipment: coveralls, heavy-duty gloves, protective eyewear and a face shield helmet. The room is enclosed, supervised and built for exactly this.</p></div>
+      </details>
+      <details>
+        <summary>What do I need to wear or bring?</summary>
+        <div class="ans"><p>Closed-toe shoes are required: no sandals, crocs, heels or flimsy flats. Bring a valid ID and wear clothes you don't mind getting messy. We provide everything else.</p></div>
+      </details>
+      <details>
+        <summary>How old do you have to be?</summary>
+        <div class="ans"><p>Ages 14 and up. Anyone under 18 needs a parent or guardian present, who also signs the liability waiver.</p></div>
+      </details>
+      <details>
+        <summary>Do I need a reservation?</summary>
+        <div class="ans"><p>Walk-ins are welcome whenever we have an open slot, but availability isn't guaranteed, especially evenings and weekends. Booking ahead takes a minute and locks in your time.</p></div>
+      </details>
+      <details>
+        <summary>Can I bring my own stuff to smash?</summary>
+        <div class="ans"><p>Often yes, with approval first. Email us and we'll let you know. For safety we can't allow pressurised cans, light bulbs, hazardous materials, heating or cooling devices, or old CRT televisions.</p></div>
+      </details>
+      <details>
+        <summary>Do you host parties and events?</summary>
+        <div class="ans"><p>Constantly. Birthdays, bachelorette and bachelor parties, team building, unit outings and full facility buyouts. Book the private party room above, or email <a href="mailto:wreckitroomvb@gmail.com" style="color:var(--bone)">wreckitroomvb@gmail.com</a> and we'll build a package around your group.</p></div>
+      </details>
+      <details>
+        <summary>Are there any discounts?</summary>
+        <div class="ans"><p>Active duty and veterans get 10% off with valid ID. Gift vouchers are available online any time.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= FOOTER ========================= -->
+<footer class="ft">
+  <div class="shell">
+    <div class="ft-grid">
+      <div>
+        <img src="assets/logo.png" alt="Wreck It Room" width="150" height="52">
+        <p>Your stress, our mess.</p>
+      </div>
+
+      <div>
+        <h4>Find Us</h4>
+        <p>
+          <a href="https://maps.google.com/?q=1630+General+Booth+Blvd+Ste+111+Virginia+Beach+VA+23454" target="_blank" rel="noopener" data-track="directions">
+            1630 General Booth Blvd, Ste. 111<br>Virginia Beach, VA 23454
+          </a>
+        </p>
+        <p>
+          <a href="mailto:wreckitroomvb@gmail.com">wreckitroomvb@gmail.com</a>
+        </p>
+      </div>
+
+      <div>
+        <h4>Hours</h4>
+        <dl>
+          <dt>Mon–Fri</dt><dd>3:00pm – 8:00pm</dd>
+          <dt>Saturday</dt><dd>12:00pm – 9:00pm</dd>
+          <dt>Sunday</dt><dd>12:00pm – 6:00pm</dd>
+        </dl>
+      </div>
+
+    </div>
+
+    <p class="legal">© <span id="yr">2026</span> Wreck It Room, Virginia Beach VA. Ages 14+. All participants must sign a liability waiver. Closed-toe shoes required.</p>
+  </div>
+</footer>
+
+<!-- ========================= STICKY MOBILE CTA ========================= -->
+<div class="sticky" id="sticky">
+  <a class="btn btn-primary" href="#book" data-track="cta_sticky">Book Now &middot; From $40</a>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"EntertainmentBusiness",
+  "name":"Wreck It Room",
+  "description":"Rage room and blacklight paint splatter studio in Virginia Beach, VA.",
+  "email":"wreckitroomvb@gmail.com",
+  "url":"https://wreckitroomvb.com/",
+  "image":"https://wreckitroomvb.com/wp-content/uploads/2025/08/homebanner.jpg",
+  "address":{
+    "@type":"PostalAddress",
+    "streetAddress":"1630 General Booth Blvd, Ste. 111",
+    "addressLocality":"Virginia Beach",
+    "addressRegion":"VA",
+    "postalCode":"23454",
+    "addressCountry":"US"
+  },
+  "priceRange":"$$",
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"15:00","closes":"20:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"12:00","closes":"21:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"12:00","closes":"18:00"}
+  ]
+}
+</script>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
