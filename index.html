@@ -514,6 +514,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <article class="card xp xp-rage">
         <div class="xp-img">
           <div class="xp-fallback" aria-hidden="true">RAGE</div>
+          <!-- DROP-IN SLOT — no code change needed.
+               Save the rage-room image as assets/rage.jpg (4:3, ~1000x750) and it
+               appears here automatically. While that file is absent the onerror
+               strips the <img> and the typographic RAGE panel behind it shows
+               instead, so the page is never broken either way.
+               When you add the photo, replace the alt text below to describe it.
+               See assets/README.md for the spec. -->
+          <img src="assets/rage.jpg" width="1000" height="750"
+               alt="Inside the Wreck It Room rage room"
+               loading="lazy" decoding="async" onerror="this.remove()">
         </div>
         <div class="xp-body">
           <h3>The Rage Room</h3>
