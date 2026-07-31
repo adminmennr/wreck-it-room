@@ -266,51 +266,7 @@
   }
 
   /* -----------------------------------------------------------
-     4. REVIEWS CAROUSEL
-
-     The track scrolls natively (touch, trackpad, wheel, keyboard) with
-     scroll-snap, so it works with JS disabled. These arrows are purely an
-     enhancement for mouse users, and they disable themselves at each end.
-     ----------------------------------------------------------- */
-  var quotes = $('#quotes');
-  var qPrev  = $('#quotesPrev');
-  var qNext  = $('#quotesNext');
-
-  if (quotes && qPrev && qNext) {
-    var step = function () {
-      var card = quotes.querySelector('.quote');
-      if (!card) return quotes.clientWidth;
-      // one card plus the flex gap
-      var gap = parseFloat(getComputedStyle(quotes).columnGap || '20') || 20;
-      return card.getBoundingClientRect().width + gap;
-    };
-
-    var syncArrows = function () {
-      // 2px tolerance: sub-pixel widths mean scrollLeft rarely hits the exact max
-      var max = quotes.scrollWidth - quotes.clientWidth;
-      qPrev.disabled = quotes.scrollLeft <= 2;
-      qNext.disabled = quotes.scrollLeft >= max - 2;
-    };
-
-    qPrev.addEventListener('click', function () {
-      quotes.scrollBy({ left: -step(), behavior: 'smooth' });
-    });
-    qNext.addEventListener('click', function () {
-      quotes.scrollBy({ left: step(), behavior: 'smooth' });
-    });
-
-    // Called straight from the scroll event rather than throttled through
-    // requestAnimationFrame: the work is two comparisons, and an rAF throttle
-    // here can wedge. If rAF is starved (hidden tab, background window) the
-    // "already queued" flag never clears and the arrows freeze for good.
-    quotes.addEventListener('scroll', syncArrows, { passive: true });
-
-    window.addEventListener('resize', syncArrows);
-    syncArrows();
-  }
-
-  /* -----------------------------------------------------------
-     5. STICKY CTA — show once the hero is out of view,
+     4. STICKY CTA — show once the hero is out of view,
         hide again over the booking widget so it never covers it.
      ----------------------------------------------------------- */
   var sticky = $('#sticky');
@@ -337,7 +293,7 @@
   }
 
   /* -----------------------------------------------------------
-     6. ANALYTICS — CTA clicks, scroll depth, booking engagement
+     5. ANALYTICS — CTA clicks, scroll depth, booking engagement
 
      Events pushed for GTM to pick up:
        cta_click · phone_click · pricing_toggle · scroll_depth
@@ -441,13 +397,13 @@
   }
 
   /* -----------------------------------------------------------
-     7. MISC
+     6. MISC
      ----------------------------------------------------------- */
   var yr = $('#yr');
   if (yr) yr.textContent = new Date().getFullYear();
 
   /* -----------------------------------------------------------
-     8. BOOT THE WIDGET
+     7. BOOT THE WIDGET
 
      Deferred until the booking section is near the viewport — the
      Bookeo script is heavy and this is an ad landing page, so it must
