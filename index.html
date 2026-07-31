@@ -13,14 +13,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 
 <title>Rage Room Virginia Beach | Smash Something, Feel Better</title>
-<meta name="description" content="Virginia Beach's rage room &amp; blacklight paint splatter studio. Smash a full crate of glass and electronics in full safety gear. From $40. Book online in 60 seconds.">
+<meta name="description" content="Virginia Beach's rage room &amp; blacklight paint splatter studio. Smash a crate of breakables in full safety gear, or splatter glow paint under UV. From $40. Book online in 60 seconds.">
 <meta name="theme-color" content="#0A0A0B">
 <link rel="icon" href="assets/favicon.png">
 
+<!-- Paid-traffic landing page. It deliberately restates content from wreckitroomvb.com,
+     so it is kept out of the organic index to avoid competing with the main site.
+     Flip to "index,follow" if we ever want it to rank on its own. -->
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://lp.wreckitroomvb.com/">
+
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Wreck It Room">
+<meta property="og:url" content="https://lp.wreckitroomvb.com/">
 <meta property="og:title" content="Rage Room Virginia Beach | Wreck It Room">
 <meta property="og:description" content="20 minutes. A crate of breakables. Full safety gear. From $40. Book online in 60 seconds.">
-<meta property="og:image" content="assets/hero.jpg">
+<!-- absolute URL required: relative paths break the preview on every share -->
+<meta property="og:image" content="https://lp.wreckitroomvb.com/assets/hero.jpg">
+<meta property="og:image:width" content="1800">
+<meta property="og:image:height" content="1253">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Rage Room Virginia Beach | Wreck It Room">
+<meta name="twitter:description" content="20 minutes. A crate of breakables. Full safety gear. From $40.">
+<meta name="twitter:image" content="https://lp.wreckitroomvb.com/assets/hero.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,7 +54,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   --red-hot:#FF3B30;
   --pink:#FF2EA6;
   --cyan:#22E0FF;
-  --lime:#C6FF3D;
 
   /* Cracked-glass texture: a branching crack network, generated so every
      path stays inside the tile edges, which makes the 600px tile seamless.
@@ -132,6 +146,15 @@ p{margin:0 0 1rem}
 .hdr img{height:56px;width:auto}
 @media(max-width:640px){.hdr img{height:44px}}
 .hdr-actions{display:flex;align-items:center;gap:.6rem}
+/* click-to-call: icon-only on small screens so it never crowds the Book CTA */
+.hdr-tel{
+  display:inline-flex;align-items:center;gap:.45rem;text-decoration:none;
+  color:var(--bone);font-weight:700;font-size:.92rem;
+  padding:.7rem 1rem;border:1px solid var(--line);border-radius:999px;background:var(--ink-3);
+}
+.hdr-tel:hover{border-color:var(--bone)}
+.hdr-tel svg{width:16px;height:16px;flex:none;color:var(--red-hot)}
+@media(max-width:560px){.hdr-tel span{display:none}.hdr-tel{padding:.7rem .85rem}}
 
 /* ============================== HERO ============================== */
 .hero{position:relative;isolation:isolate;overflow:hidden}
@@ -175,8 +198,13 @@ p{margin:0 0 1rem}
 /* ============================== CARDS ============================== */
 .grid{display:grid;gap:1.25rem}
 .g-2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
-.g-3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-.g-4{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+/* explicit steps rather than auto-fit: auto-fit left an orphaned third/fourth
+   card stranded on its own row between ~780-1000px */
+.g-3{grid-template-columns:1fr}
+@media(min-width:760px){.g-3{grid-template-columns:repeat(3,1fr)}}
+.g-4{grid-template-columns:1fr}
+@media(min-width:560px){.g-4{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.g-4{grid-template-columns:repeat(4,1fr)}}
 
 .card{
   /* solid: content surfaces stay opaque so the section texture never
@@ -191,18 +219,21 @@ p{margin:0 0 1rem}
 
 /* experience cards */
 .xp{padding:0;display:flex;flex-direction:column}
-/* 4/3 is the compromise ratio: rage.jpg is landscape (1.23), radiant.png is
-   portrait (0.85). Crop focus is tuned per card so neither loses its subject. */
 .xp-img{aspect-ratio:4/3;background:var(--ink-3);position:relative;overflow:hidden}
 .xp-img img{width:100%;height:100%;object-fit:cover;position:relative;z-index:1}
-.xp-rage  .xp-img img{object-position:center 45%}
-.xp-paint .xp-img img{object-position:center 22%}   /* keeps the raised arms in frame */
+.xp-paint .xp-img img{object-position:center 45%}
+/* The rage panel is typographic by design: every rage-room photo we hold shows
+   a sledgehammer, which the owner removed from the floor. Swap in a real photo
+   of the bats/crowbars when she sends one — drop an <img> in beside this. */
 .xp-fallback{
   position:absolute;inset:0;z-index:0;display:grid;place-items:center;
-  font-family:var(--display);font-size:2.4rem;color:rgba(244,240,232,.2);letter-spacing:.05em;
+  font-family:var(--display);font-size:clamp(2.6rem,7vw,4.2rem);
+  color:transparent;-webkit-text-stroke:2px rgba(224,27,36,.75);letter-spacing:.06em;
 }
-.xp-rage .xp-fallback{background:radial-gradient(120% 120% at 30% 20%,#3A0D10,#0F0F12)}
-.xp-paint .xp-fallback{background:radial-gradient(120% 120% at 70% 20%,#2A0B3D,#0B0F1A)}
+.xp-rage .xp-fallback{
+  background-color:#160609;
+  background-image:radial-gradient(120% 120% at 30% 20%,#3A0D10,#0B0B0E),var(--cracks);
+}
 .xp-body{padding:1.6rem;display:flex;flex-direction:column;flex:1}
 .xp-meta{
   display:flex;flex-wrap:wrap;gap:.45rem;margin:0 0 1rem;padding:0;list-style:none;
@@ -212,6 +243,7 @@ p{margin:0 0 1rem}
   background:var(--ink-3);border:1px solid var(--line);
   padding:.32rem .7rem;border-radius:999px;color:var(--bone-dim);
 }
+.xp-meta li.hi{border-color:var(--pink);color:var(--pink)}
 .xp-body .btn{margin-top:auto}
 .xp-paint h3{color:var(--pink)}
 .xp-paint .xp-meta li{border-color:rgba(255,46,166,.3)}
@@ -256,6 +288,23 @@ p{margin:0 0 1rem}
 
 .fineprint{font-size:.85rem;color:var(--bone-dim);margin-top:1.75rem;text-align:center}
 
+/* ============================== ADD-ONS ============================== */
+.addons{
+  margin-top:2rem;background-color:var(--ink-2);
+  background-image:linear-gradient(180deg,var(--ink-2),var(--ink));
+  border:1px solid var(--line);border-radius:var(--r);padding:1.75rem;
+}
+.addons h3{margin-bottom:.5rem}
+.addons > p{color:var(--bone-dim);font-size:.97rem;max-width:62ch}
+.addons ul{
+  list-style:none;margin:1.25rem 0 0;padding:0;
+  display:grid;gap:.6rem 1.5rem;grid-template-columns:1fr;
+}
+@media(min-width:700px){.addons ul{grid-template-columns:repeat(2,1fr)}}
+.addons li{display:flex;gap:.6rem;align-items:flex-start;font-size:.95rem;color:var(--bone-dim)}
+.addons li::before{content:"+";color:var(--red-hot);font-family:var(--display);font-size:1.1rem;flex:none;line-height:1.3}
+.addons li b{color:var(--bone);font-weight:700}
+
 /* ============================== STEPS ============================== */
 .step{position:relative}
 .step .num{
@@ -266,6 +315,20 @@ p{margin:0 0 1rem}
 .step h3{margin-top:0}
 
 /* ============================== PROOF ============================== */
+.quotes{display:grid;gap:1.25rem;grid-template-columns:1fr}
+@media(min-width:760px){.quotes{grid-template-columns:repeat(3,1fr)}}
+.quote{
+  background-color:var(--ink-2);background-image:linear-gradient(180deg,var(--ink-2),var(--ink));
+  border:1px solid var(--line);border-radius:var(--r);padding:1.6rem;
+  display:flex;flex-direction:column;
+}
+.quote blockquote{margin:0 0 1rem;font-size:1rem;color:var(--bone);line-height:1.55}
+.quote blockquote::before{content:"“";font-family:var(--display);font-size:2.4rem;color:var(--red-hot);display:block;line-height:.6;margin-bottom:.5rem}
+.quote cite{
+  margin-top:auto;font-style:normal;font-size:.78rem;font-weight:800;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--bone-dim);
+}
+
 /* ============================== OCCASIONS ============================== */
 .occ{display:flex;flex-wrap:wrap;gap:.65rem;justify-content:center}
 .occ span{
@@ -352,6 +415,7 @@ p{margin:0 0 1rem}
 .ft dl{margin:0;display:grid;grid-template-columns:auto auto;justify-content:start;gap:.35rem 1.5rem}
 .ft dt{font-weight:700;color:var(--bone)}
 .ft dd{margin:0;text-align:right;font-variant-numeric:tabular-nums}
+.ft .hours-note{margin:.9rem 0 0;font-size:.85rem}
 .legal{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--line);font-size:.83rem}
 
 /* ============================== STICKY CTA ============================== */
@@ -365,6 +429,8 @@ p{margin:0 0 1rem}
 }
 .sticky.show{transform:translateY(0)}
 .sticky .btn{flex:1}
+.sticky .btn-ghost{flex:none;padding-inline:1.1rem}
+.sticky .btn-ghost svg{width:18px;height:18px}
 /* Mobile pattern only — desktop already has a persistent header CTA. */
 @media(min-width:900px){.sticky{display:none}}
 @media(min-width:900px){.ft{padding-bottom:3.5rem}}
@@ -388,6 +454,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <img src="assets/logo.png" alt="Wreck It Room" width="161" height="56">
     </a>
     <div class="hdr-actions">
+      <a class="hdr-tel" href="tel:+17577973898" data-track="phone_header">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>(757) 797-3898</span>
+      </a>
       <a class="btn btn-primary btn-sm" href="#book" data-track="cta_header">Book Now</a>
     </div>
   </div>
@@ -400,12 +470,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <video autoplay muted loop playsinline poster="assets/hero.jpg">
       <source src="assets/hero-loop.mp4" type="video/mp4">
     </video> -->
-    <img src="assets/hero.jpg" alt="A person in red coveralls and a face shield smashing a television with a sledgehammer inside the Wreck It Room rage room" fetchpriority="high">
+    <img src="assets/hero.jpg" alt="" fetchpriority="high" width="1800" height="1253">
   </div>
   <div class="shell hero-in">
     <p class="eyebrow">Virginia Beach · General Booth Blvd</p>
     <h1>Smash Something.<em>Feel Better.</em></h1>
-    <p>Twenty minutes, a crate of glass and electronics, and a sledgehammer with your name on it. Zero cleanup.</p>
+    <p>Twenty minutes, a crate of breakables and a bat with your name on it. Or a blacklight room and a loaded paint blaster. Zero cleanup either way.</p>
     <div class="price-chip">Sessions from <b>$40</b> · book in 60 seconds</div>
     <div class="hero-cta">
       <a class="btn btn-primary" href="#book" data-track="cta_hero">Book Your Session</a>
@@ -417,10 +487,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="trust">
   <div class="shell">
     <ul>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Ages 14+</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Rage 14+ · Paint all ages</li>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Full safety gear provided</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Walk-ins welcome</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>10% military discount</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Walk-ins Fri–Sun</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>10% military &amp; first responder</li>
     </ul>
   </div>
 </div>
@@ -437,33 +507,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <article class="card xp xp-rage">
         <div class="xp-img">
           <div class="xp-fallback" aria-hidden="true">RAGE</div>
-          <img src="assets/rage.jpg" width="1881" height="1533"
-               alt="A person in red coveralls and a face shield swinging a sledgehammer through a television in the rage room"
-               loading="lazy" decoding="async" onerror="this.remove()">
         </div>
         <div class="xp-body">
           <h3>The Rage Room</h3>
           <ul class="xp-meta">
-            <li>20 min</li><li>Up to 6</li><li>From $40</li>
+            <li>20 min</li><li>Up to 6</li><li>Ages 14+</li><li>From $40</li>
           </ul>
-          <p>Bats, crowbars and a crate packed with glass, electronics, toys and small appliances. Suit up in coveralls, gloves and a face shield helmet, plug in your music, and let the week out on something that deserves it.</p>
+          <p>Bats, crowbars and dead blows — plus whatever else has landed in the tool bin that week, from hockey sticks to golf clubs. You get a crate of breakables, coveralls, gloves and a face shield helmet, your own playlist on the speaker, and a private room to let the week out in.</p>
           <a class="btn btn-primary btn-block" href="#book" data-book="rage" data-track="cta_xp_rage">Book The Rage Room</a>
         </div>
       </article>
 
       <article class="card xp xp-paint">
         <div class="xp-img">
-          <div class="xp-fallback" aria-hidden="true">GLOW</div>
-          <img src="assets/radiant.png" width="774" height="908"
-               alt="Four people covered head to toe in glowing neon paint under blacklight, arms raised mid-splatter"
-               loading="lazy" decoding="async" onerror="this.remove()">
+          <img src="assets/paint.jpg" width="1000" height="850"
+               alt="Three people in white protective coveralls, goggles and booties throwing glowing neon paint at each other under blacklight"
+               loading="lazy" decoding="async">
         </div>
         <div class="xp-body">
           <h3>Radiant Wreck</h3>
           <ul class="xp-meta">
-            <li>15–20 min</li><li>Up to 6</li><li>From $40</li>
+            <li>20 min</li><li>Up to 6</li><li class="hi">All ages</li><li>From $40</li>
           </ul>
-          <p>Blacklight paint splatter. Neon colours, brushes, loaded paint blasters and canvases, all glowing under UV. Same release, none of the broken glass, and you walk out with something you can actually hang on a wall.</p>
+          <p>Blacklight paint splatter. Neon colours, brushes and loaded paint blasters, all glowing under UV. We kit you out in coveralls, booties and protective eyewear. Same release as the rage room, none of the broken glass — and this is the one the whole family can do together.</p>
           <a class="btn btn-primary btn-block" href="#book" data-book="paint" data-track="cta_xp_paint">Book Radiant Wreck</a>
         </div>
       </article>
@@ -477,22 +543,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="center" style="margin-bottom:2rem">
       <p class="eyebrow">No math, no surprises</p>
       <h2>Flat Pricing</h2>
-      <p class="lede">One price for your whole group. Everything below includes gear, tools and cleanup.</p>
+      <p class="lede">$40 for the first person, $20 for each person after that. Everything below includes gear, tools and cleanup.</p>
     </div>
 
     <div class="center">
       <div class="toggle" role="tablist" aria-label="Choose experience pricing">
-        <button role="tab" id="tab-price-rage" aria-controls="panel-price" aria-selected="true" data-pricing-tab="rage">Rage Room</button>
-        <button class="paint" role="tab" id="tab-price-paint" aria-controls="panel-price" aria-selected="false" data-pricing-tab="paint">Radiant Wreck</button>
+        <button role="tab" id="tab-price-rage" aria-controls="panel-price" aria-selected="true" tabindex="0" data-pricing-tab="rage">Rage Room</button>
+        <button class="paint" role="tab" id="tab-price-paint" aria-controls="panel-price" aria-selected="false" tabindex="-1" data-pricing-tab="paint">Radiant Wreck</button>
       </div>
     </div>
 
-    <div id="panel-price" role="tabpanel" aria-labelledby="tab-price-rage" data-pricing="rage">
+    <div id="panel-price" role="tabpanel" tabindex="0" aria-labelledby="tab-price-rage" data-pricing="rage">
       <div class="grid g-4">
         <article class="card tier">
           <p class="name">Solo</p>
           <div class="amt">$40</div>
-          <p class="unit">1 person · <span data-dur>20 min</span></p>
+          <p class="unit">1 person · 20 min</p>
           <ul class="inc">
             <li>Full safety gear</li>
             <li><span data-kit>One crate of breakables</span></li>
@@ -504,8 +570,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <article class="card tier featured">
           <span class="flag">Most booked</span>
           <p class="name">Duo</p>
-          <div class="amt" data-amt-duo>$60</div>
-          <p class="unit">2 people · <span data-dur>20 min</span></p>
+          <div class="amt">$60</div>
+          <p class="unit">2 people · 20 min</p>
           <ul class="inc">
             <li>Gear for both of you</li>
             <li><span data-kit>One crate of breakables</span></li>
@@ -516,8 +582,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <article class="card tier">
           <p class="name">Squad</p>
-          <div class="amt" data-amt-squad>$140</div>
-          <p class="unit">Up to 6 people · <span data-dur>20 min</span></p>
+          <div class="amt">$140</div>
+          <p class="unit">Up to 6 people · 20 min</p>
           <ul class="inc">
             <li>Gear for all six</li>
             <li><span data-kit>One crate of breakables</span></li>
@@ -527,20 +593,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </article>
 
         <article class="card tier">
-          <p class="name">Private Party</p>
+          <p class="name">Group Session</p>
           <div class="amt" data-amt-party>$350</div>
-          <p class="unit">Up to 10 people · 1 full hour</p>
+          <p class="unit" data-unit-party>Up to 10 people · 1 full hour</p>
           <ul class="inc" data-inc-party>
-            <li>Private double room</li>
+            <li>Your own private double room</li>
             <li>Two crates of breakables</li>
             <li>20 beer bottles</li>
             <li>10 liquor / wine / champagne bottles</li>
-            <li>3 electronics (S, M &amp; L)</li>
+            <li>Small, medium &amp; large electronics</li>
           </ul>
           <a class="btn btn-ghost btn-block" href="#book" data-book="rage-group" data-track="cta_tier_party">Book</a>
         </article>
       </div>
-      <p class="fineprint">10% off for active duty and veterans with valid ID. Gift vouchers available. <a href="https://bookeo.com/wreckitroomvb/buyvoucher" target="_blank" rel="noopener" data-track="voucher" style="color:var(--bone)">Buy one here</a>.</p>
+
+      <!-- Add-ons: requested by the owner so the crate price doesn't set the
+           ceiling on what people think they can break. -->
+      <div class="addons">
+        <h3>Want More To Break?</h3>
+        <p>The admission crate is glass, toys and small household bits. If that isn't enough, we keep extras on hand — just ask when you book or when you arrive.</p>
+        <ul>
+          <li><b>TVs and electronics</b> — small, medium and large</li>
+          <li><b>Extra glass</b> — bottles, glassware and plates</li>
+          <li><b>A case of beer bottles</b> — for the full crate-smashing experience</li>
+          <li><b>A canvas for the paint room</b> — take your painting home with you</li>
+        </ul>
+      </div>
+
+      <p class="fineprint">10% off for active duty, veterans and first responders with valid ID. Gift vouchers available. <a href="https://bookeo.com/wreckitroomvb/buyvoucher?source=lp" target="_blank" rel="noopener" data-track="voucher" style="color:var(--bone)">Buy one here</a>.</p>
     </div>
   </div>
 </section>
@@ -556,17 +636,41 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <article class="card step">
         <span class="num" aria-hidden="true">01</span>
         <h3>Book Online</h3>
-        <p>Pick your room, your time and your group size right here on this page. Takes about a minute. Walk-ins are welcome too, but slots go fast on weekends.</p>
+        <p>Pick your room, your time and your group size right here on this page. Takes about a minute. Monday to Thursday we run by reservation only — Friday to Sunday you can walk in if we have a slot free.</p>
       </article>
       <article class="card step">
         <span class="num" aria-hidden="true">02</span>
         <h3>Gear Up</h3>
-        <p>Arrive 10 minutes early with a valid ID and closed-toe shoes. We hand you coveralls, heavy-duty gloves, protective eyewear and a face shield helmet.</p>
+        <p>Arrive 10 minutes early in closed-toe shoes and clothes you don't mind ruining. We hand you coveralls, heavy-duty gloves, protective eyewear and a face shield helmet.</p>
       </article>
       <article class="card step">
         <span class="num" aria-hidden="true">03</span>
         <h3>Wreck It</h3>
         <p>Connect your phone to the speaker and go. Swing, smash, splatter, scream. When the timer stops, you walk out and we handle every last piece of glass.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= PROOF ========================= -->
+<section class="section alt" id="proof">
+  <div class="shell">
+    <div class="center" style="margin-bottom:2.5rem">
+      <p class="eyebrow">From people who booked</p>
+      <h2>Straight From The Room</h2>
+    </div>
+    <div class="quotes">
+      <article class="quote">
+        <blockquote>Had such a great time!! Owner very professional, love the safety gear. 20 minutes is actually the right amount of time. You can pretty get tired and sweaty.</blockquote>
+        <cite>Amy</cite>
+      </article>
+      <article class="quote">
+        <blockquote>We had a great time! The staff were amazing.</blockquote>
+        <cite>Amber</cite>
+      </article>
+      <article class="quote">
+        <blockquote>Very fun and appreciated the encouragement.</blockquote>
+        <cite>Wesley</cite>
       </article>
     </div>
   </div>
@@ -581,7 +685,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="occ">
       <span>Birthdays</span><span>Date Night</span><span>Bachelorette</span>
       <span>Team Building</span><span>Military &amp; First Responders</span><span>Breakups</span>
-      <span>Divorce Parties</span><span>Rainy Beach Day</span><span>Teens 14+</span>
+      <span>Kids' Parties</span><span>Rainy Beach Day</span><span>Family Day Out</span>
       <span>Bad Weeks</span><span>Bachelor Parties</span><span>Just Because</span>
     </div>
   </div>
@@ -597,21 +701,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <div class="tabs" role="tablist" aria-label="Choose what to book">
-      <button role="tab" aria-selected="true"  aria-controls="bookeo_position" data-tab="rage">Rage Room</button>
-      <button role="tab" aria-selected="false" aria-controls="bookeo_position" data-tab="paint">Radiant Wreck</button>
-      <button role="tab" aria-selected="false" aria-controls="bookeo_position" data-tab="rage-group">Rage · Private Party</button>
-      <button role="tab" aria-selected="false" aria-controls="bookeo_position" data-tab="paint-group">Radiant · Private Party</button>
+      <!-- roving tabindex: only the selected tab is a tab stop (JS keeps it in sync) -->
+      <button role="tab" aria-selected="true"  tabindex="0"  aria-controls="bookeo_position" data-tab="rage">Rage Room</button>
+      <button role="tab" aria-selected="false" tabindex="-1" aria-controls="bookeo_position" data-tab="paint">Radiant Wreck</button>
+      <button role="tab" aria-selected="false" tabindex="-1" aria-controls="bookeo_position" data-tab="rage-group">Rage · Group</button>
+      <button role="tab" aria-selected="false" tabindex="-1" aria-controls="bookeo_position" data-tab="paint-group">Radiant · Group</button>
     </div>
 
     <!-- ------------------------------------------------------------------
-         BOOKEO WIDGET  (same approach as the Novel Escape LP)
+         BOOKEO WIDGET
          Bookeo allows only ONE widget instance per page, so we keep a single
          shared mount (#bookeo_position) and swap the product on demand.
          Set BOOKEO_ACCOUNT in js/main.js — the `a=` value from
          Bookeo → Settings → Online bookings → "Add booking to your website".
          ------------------------------------------------------------------ -->
     <div class="embed">
-      <div id="bookeo_position"></div>
+      <div id="bookeo_position" role="tabpanel" aria-label="Booking calendar"></div>
 
       <div class="embed-state" id="bookingLoading">
         <div class="spinner" aria-hidden="true"></div>
@@ -621,15 +726,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="embed-state" id="bookingUnconfigured" hidden>
         <h4>Booking widget not connected yet</h4>
         <p>Add your Bookeo account ID to <span class="embed-code">BOOKEO_ACCOUNT</span> in <span class="embed-code">js/main.js</span>. Until then, this button opens the hosted booking page so no booking is lost.</p>
-        <a class="btn btn-primary" href="https://bookeo.com/wreckitroomvb" target="_blank" rel="noopener" data-track="booking_hosted">Open Booking Page</a>
+        <a class="btn btn-primary" href="https://bookeo.com/wreckitroomvb?source=lp" target="_blank" rel="noopener" data-track="booking_hosted">Open Booking Page</a>
       </div>
     </div>
-    <p class="embed-note">Trouble with the booking window? <a href="https://bookeo.com/wreckitroomvb" target="_blank" rel="noopener" data-track="booking_fallback">Open it in a new tab</a>.</p>
+    <p class="embed-note">Trouble with the booking window? <a href="https://bookeo.com/wreckitroomvb?source=lp" target="_blank" rel="noopener" data-track="booking_fallback">Open it in a new tab</a>, or call <a href="tel:+17577973898" data-track="phone_booking">(757) 797-3898</a>.</p>
   </div>
 </section>
 
 <!-- ========================= FAQ ========================= -->
-<section class="section alt" id="faq">
+<section class="section" id="faq">
   <div class="shell">
     <div class="center" style="margin-bottom:2.5rem">
       <p class="eyebrow">Before you book</p>
@@ -638,7 +743,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="faq">
       <details open>
         <summary>Is 20 minutes really enough?</summary>
-        <div class="ans"><p>It's longer than it sounds. Swinging a sledgehammer in coveralls is genuinely hard work. Most people are winded by minute twelve and grinning by minute fifteen. If you want a full hour, book the private party room.</p></div>
+        <div class="ans"><p>It's longer than it sounds. Swinging a bat in coveralls is genuinely hard work. Most people are winded by minute twelve and grinning by minute fifteen. If you want a full hour, book a group session.</p></div>
       </details>
       <details>
         <summary>Is it safe?</summary>
@@ -646,27 +751,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </details>
       <details>
         <summary>What do I need to wear or bring?</summary>
-        <div class="ans"><p>Closed-toe shoes are required: no sandals, crocs, heels or flimsy flats. Bring a valid ID and wear clothes you don't mind getting messy. We provide everything else.</p></div>
+        <div class="ans"><p>Closed-toe shoes are required: no sandals, crocs, heels or flimsy flats. Wear clothes you don't mind getting messy. We provide everything else.</p></div>
       </details>
       <details>
         <summary>How old do you have to be?</summary>
-        <div class="ans"><p>Ages 14 and up. Anyone under 18 needs a parent or guardian present, who also signs the liability waiver.</p></div>
+        <div class="ans"><p>The rage room is 14 and up. <strong>The paint room is all ages</strong> — that's the one the whole family can do together. Anyone under 18 needs a parent or guardian present, who also signs the liability waiver.</p></div>
       </details>
       <details>
         <summary>Do I need a reservation?</summary>
-        <div class="ans"><p>Walk-ins are welcome whenever we have an open slot, but availability isn't guaranteed, especially evenings and weekends. Booking ahead takes a minute and locks in your time.</p></div>
+        <div class="ans"><p>Monday to Thursday, yes — we run by reservation only. Friday to Sunday we take walk-ins whenever we have an open slot, but availability isn't guaranteed and weekends fill up fast. Booking ahead takes a minute and locks in your time.</p></div>
       </details>
       <details>
         <summary>Can I bring my own stuff to smash?</summary>
-        <div class="ans"><p>Often yes, with approval first. Email us and we'll let you know. For safety we can't allow pressurised cans, light bulbs, hazardous materials, heating or cooling devices, or old CRT televisions.</p></div>
+        <div class="ans"><p>Often yes, with approval first — there's a small fee for bringing your own items. Email us and we'll let you know. For safety we can't allow pressurised cans, light bulbs, hazardous materials, heating or cooling devices, or old CRT televisions.</p></div>
       </details>
       <details>
         <summary>Do you host parties and events?</summary>
-        <div class="ans"><p>Constantly. Birthdays, bachelorette and bachelor parties, team building, unit outings and full facility buyouts. Book the private party room above, or email <a href="mailto:wreckitroomvb@gmail.com" style="color:var(--bone)">wreckitroomvb@gmail.com</a> and we'll build a package around your group.</p></div>
+        <div class="ans"><p>Constantly. Birthdays, bachelorette and bachelor parties, team building, unit outings and full facility buyouts. Every session is already in its own private room, so there's no separate party room to book — the group sessions above simply give you a bigger room, a full hour and a lot more to break. Book one above, or email <a href="mailto:wreckitroomvb@gmail.com" style="color:var(--bone)">wreckitroomvb@gmail.com</a> and we'll build a package around your group.</p></div>
       </details>
       <details>
         <summary>Are there any discounts?</summary>
-        <div class="ans"><p>Active duty and veterans get 10% off with valid ID. Gift vouchers are available online any time.</p></div>
+        <div class="ans"><p>Active duty, veterans and first responders get 10% off with valid ID. Gift vouchers are available online any time.</p></div>
       </details>
     </div>
   </div>
@@ -689,28 +794,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </a>
         </p>
         <p>
-          <a href="mailto:wreckitroomvb@gmail.com">wreckitroomvb@gmail.com</a>
+          <a href="tel:+17577973898" data-track="phone_footer">(757) 797-3898</a><br>
+          <a href="mailto:wreckitroomvb@gmail.com" data-track="email_footer">wreckitroomvb@gmail.com</a>
         </p>
       </div>
 
       <div>
         <h4>Hours</h4>
         <dl>
-          <dt>Mon–Fri</dt><dd>3:00pm – 8:00pm</dd>
+          <dt>Mon–Thu</dt><dd>3:00pm – 8:00pm</dd>
+          <dt>Friday</dt><dd>3:00pm – 8:00pm</dd>
           <dt>Saturday</dt><dd>12:00pm – 9:00pm</dd>
           <dt>Sunday</dt><dd>12:00pm – 6:00pm</dd>
         </dl>
+        <p class="hours-note">Mon–Thu is reservation only.<br>Walk-ins welcome Fri–Sun.</p>
       </div>
 
     </div>
 
-    <p class="legal">© <span id="yr">2026</span> Wreck It Room, Virginia Beach VA. Ages 14+. All participants must sign a liability waiver. Closed-toe shoes required.</p>
+    <p class="legal">© <span id="yr">2026</span> Wreck It Room, Virginia Beach VA. Rage room ages 14+; paint room all ages. All participants must sign a liability waiver. Closed-toe shoes required.</p>
   </div>
 </footer>
 
 <!-- ========================= STICKY MOBILE CTA ========================= -->
 <div class="sticky" id="sticky">
   <a class="btn btn-primary" href="#book" data-track="cta_sticky">Book Now &middot; From $40</a>
+  <a class="btn btn-ghost" href="tel:+17577973898" aria-label="Call Wreck It Room" data-track="phone_sticky">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
 </div>
 
 <script type="application/ld+json">
@@ -720,8 +831,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   "name":"Wreck It Room",
   "description":"Rage room and blacklight paint splatter studio in Virginia Beach, VA.",
   "email":"wreckitroomvb@gmail.com",
-  "url":"https://wreckitroomvb.com/",
-  "image":"https://wreckitroomvb.com/wp-content/uploads/2025/08/homebanner.jpg",
+  "telephone":"+1-757-797-3898",
+  "url":"https://lp.wreckitroomvb.com/",
+  "image":"https://lp.wreckitroomvb.com/assets/hero.jpg",
   "address":{
     "@type":"PostalAddress",
     "streetAddress":"1630 General Booth Blvd, Ste. 111",
@@ -730,7 +842,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     "postalCode":"23454",
     "addressCountry":"US"
   },
-  "priceRange":"$$",
+  "priceRange":"$40-$400",
   "openingHoursSpecification":[
     {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"15:00","closes":"20:00"},
     {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"12:00","closes":"21:00"},

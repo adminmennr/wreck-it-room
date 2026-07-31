@@ -1,0 +1,13 @@
+# Paid-traffic landing page for Google Ads.
+# It deliberately restates content from wreckitroomvb.com, so it is kept out of
+# the organic index to avoid competing with the main site. Google Ads does not
+# require a page to be indexed to serve or to score it.
+#
+# The <meta name="robots" content="noindex,follow"> in index.html is the
+# authoritative signal — crawling must stay ALLOWED here, because a Disallow
+# would stop crawlers ever reading that meta tag.
+#
+# To let this page rank on its own, remove the meta robots tag in index.html.
+
+User-agent: *
+Allow: /

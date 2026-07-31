@@ -15,12 +15,21 @@
   // If this is ever blanked, the page falls back to the hosted booking page.
   var BOOKEO_ACCOUNT = '3151NKCMNE1982E9206A4';
 
-  // Product type IDs, pulled from the live wreckitroomvb.com booking links.
+  // First-party booking-source tag. Bookeo records it against the booking, which
+  // gives us a source record that survives ad blockers and cookie loss — the
+  // independent cross-check on what this landing page actually produced.
+  // Keep it identical to the `?source=` on the hosted fallback links in the HTML.
+  var BOOKEO_SOURCE = 'lp';
+
+  // Product type IDs, verified 2026-07-31 against the live Bookeo catalogue.
+  // NOTE: Bookeo exposes exactly these four. "Beast Mode" (3151AP69RL1988739EB1E)
+  // and "Breaking Point" (3151NFWPWF198A04158EB) still appear on wreckitroomvb.com
+  // but are DISABLED in Bookeo and return an error page — do not link them.
   var PRODUCTS = {
     'rage':        { id: '31514FY9UP198380B9710',  label: 'Rage Room' },
     'paint':       { id: '3151RXWNT3198A3B2C785',  label: 'Radiant Wreck' },
-    'rage-group':  { id: '3151JM9XLE198BE032A26',  label: 'Rage Room · Private Party' },
-    'paint-group': { id: '3151C7PCF9198BDF6EF82',  label: 'Radiant Wreck · Private Party' }
+    'rage-group':  { id: '3151JM9XLE198BE032A26',  label: 'Rage Room · Group Session' },
+    'paint-group': { id: '3151C7PCF9198BDF6EF82',  label: 'Radiant Wreck · Group Session' }
   };
 
   /* -----------------------------------------------------------
@@ -110,14 +119,18 @@
     if (!product) return;
 
     tabs.forEach(function (t) {
-      t.setAttribute('aria-selected', String(t.dataset.tab === key));
+      var on = t.dataset.tab === key;
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;      // roving tabindex: one stop for the whole tablist
     });
 
     if (!BOOKEO_ACCOUNT) {
       // Not configured yet — keep the hosted-page fallback visible.
       showState(unconfigEl);
     } else if (currentKey !== key) {
-      loadWidget('https://bookeo.com/widget.js?a=' + BOOKEO_ACCOUNT + '&type=' + product.id);
+      loadWidget('https://bookeo.com/widget.js?a=' + BOOKEO_ACCOUNT +
+                 '&type=' + product.id +
+                 (BOOKEO_SOURCE ? '&source=' + encodeURIComponent(BOOKEO_SOURCE) : ''));
       currentKey = key;
       track('booking_widget_change', { product: key, product_name: product.label });
     }
@@ -160,27 +173,31 @@
 
   /* -----------------------------------------------------------
      3. PRICING TOGGLE — rage vs paint
+
+     Both single sessions are $40 first person / +$20 each additional /
+     20 minutes (verified against the live Bookeo catalogue 2026-07-31),
+     so only the kit contents and the group session differ between them.
      ----------------------------------------------------------- */
   var PRICING = {
     rage: {
-      duo: '$60', squad: '$140', party: '$350',
-      dur: '20 min',
       kit: 'One crate of breakables',
+      party: '$350',
+      party_unit: 'Up to 10 people · 1 full hour',
       party_inc: [
-        'Private double room',
+        'Your own private double room',
         'Two crates of breakables',
         '20 beer bottles',
         '10 liquor / wine / champagne bottles',
-        '3 electronics (S, M &amp; L)'
+        'Small, medium &amp; large electronics'
       ]
     },
     paint: {
-      duo: '$55', squad: '$115', party: '$400',
-      dur: '15–20 min',
       kit: 'Paint, brushes &amp; blasters',
+      party: '$400',
+      party_unit: 'Up to 10 people',
       party_inc: [
-        'Private double room',
-        '10 canvases',
+        'Your own private double room',
+        '10 canvases included',
         '20 filled paint blasters',
         'Full colour range &amp; brushes',
         'Coveralls, booties &amp; eyewear'
@@ -189,7 +206,8 @@
   };
 
   var panel = $('#panel-price');
-  $$('[data-pricing-tab]').forEach(function (btn) {
+  var pricingTabs = $$('[data-pricing-tab]');
+  pricingTabs.forEach(function (btn) {
     btn.addEventListener('click', function () {
       var key = btn.dataset.pricingTab;
       var set = PRICING[key];
@@ -198,19 +216,21 @@
       panel.dataset.pricing = key;
       panel.setAttribute('aria-labelledby', btn.id);
 
-      $$('[data-pricing-tab]').forEach(function (b) {
-        b.setAttribute('aria-selected', String(b === btn));
+      pricingTabs.forEach(function (b) {
+        var on = b === btn;
+        b.setAttribute('aria-selected', String(on));
+        b.tabIndex = on ? 0 : -1;
       });
 
-      var duo   = $('[data-amt-duo]',   panel);
-      var squad = $('[data-amt-squad]', panel);
       var party = $('[data-amt-party]', panel);
-      if (duo)   duo.textContent   = set.duo;
-      if (squad) squad.textContent = set.squad;
       if (party) party.textContent = set.party;
 
-      $$('[data-dur]', panel).forEach(function (n) { n.textContent = set.dur; });
-      $$('[data-kit]', panel).forEach(function (n) { n.innerHTML   = set.kit; });
+      // The paint group session duration is not published anywhere we can verify,
+      // so that tier shows capacity only until the owner confirms a time.
+      var punit = $('[data-unit-party]', panel);
+      if (punit) punit.textContent = set.party_unit;
+
+      $$('[data-kit]', panel).forEach(function (n) { n.innerHTML = set.kit; });
 
       var inc = $('[data-inc-party]', panel);
       if (inc) {
@@ -228,6 +248,20 @@
     });
   });
 
+  // Arrow-key navigation across the pricing tablist.
+  var priceList = $('.toggle');
+  if (priceList) {
+    priceList.addEventListener('keydown', function (e) {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      var i = pricingTabs.indexOf(document.activeElement);
+      if (i === -1) return;
+      e.preventDefault();
+      var next = pricingTabs[(i + (e.key === 'ArrowRight' ? 1 : -1) + pricingTabs.length) % pricingTabs.length];
+      next.focus();
+      next.click();
+    });
+  }
+
   /* -----------------------------------------------------------
      4. STICKY CTA — show once the hero is out of view,
         hide again over the booking widget so it never covers it.
@@ -235,7 +269,7 @@
   var sticky = $('#sticky');
   var hero   = $('.hero');
 
-  if (sticky && 'IntersectionObserver' in window) {
+  if (sticky && hero && 'IntersectionObserver' in window) {
     var pastHero = false;
     var onBooking = false;
     var apply = function () {
@@ -257,11 +291,23 @@
 
   /* -----------------------------------------------------------
      5. ANALYTICS — CTA clicks, scroll depth, booking engagement
+
+     Events pushed for GTM to pick up:
+       cta_click · phone_click · pricing_toggle · scroll_depth
+       view_booking_widget · booking_widget_change · booking_widget_error
+       begin_checkout (soft signal only — see note below)
+
+     ⚠️ Do NOT import any of these into Google Ads as a PRIMARY conversion.
+     The real conversion is Bookeo's own `purchase` (with value + transaction_id)
+     via its native GA4 / Ads integration. Importing a click here as primary
+     would double-count and corrupt bidding.
      ----------------------------------------------------------- */
   $$('[data-track]').forEach(function (el) {
     el.addEventListener('click', function () {
-      track('cta_click', {
-        cta_id: el.dataset.track,
+      var id = el.dataset.track;
+      var isPhone = (el.getAttribute('href') || '').indexOf('tel:') === 0;
+      track(isPhone ? 'phone_click' : 'cta_click', {
+        cta_id: id,
         cta_text: (el.textContent || '').trim().slice(0, 60)
       });
     });
@@ -288,6 +334,8 @@
   }, { passive: true });
 
   // Proxy for "started booking": focus moved into the Bookeo widget iframe.
+  // Soft signal — it misses anyone who interacts without the iframe taking
+  // focus, so treat it as engagement, never as a conversion.
   var bookingStarted = false;
   window.addEventListener('blur', function () {
     if (bookingStarted || !mount) return;
