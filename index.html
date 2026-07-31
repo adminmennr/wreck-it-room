@@ -301,8 +301,13 @@ p{margin:0 0 1rem}
   display:grid;gap:.6rem 1.5rem;grid-template-columns:1fr;
 }
 @media(min-width:700px){.addons ul{grid-template-columns:repeat(2,1fr)}}
-.addons li{display:flex;gap:.6rem;align-items:flex-start;font-size:.95rem;color:var(--bone-dim)}
-.addons li::before{content:"+";color:var(--red-hot);font-family:var(--display);font-size:1.1rem;flex:none;line-height:1.3}
+/* block, not flex: as a flex container the <b> became its own flex item and
+   wrapped independently of the description that follows it */
+.addons li{position:relative;padding-left:1.4rem;font-size:.95rem;color:var(--bone-dim)}
+.addons li::before{
+  content:"+";position:absolute;left:0;top:0;
+  color:var(--red-hot);font-family:var(--display);font-size:1.1rem;line-height:1.5;
+}
 .addons li b{color:var(--bone);font-weight:700}
 
 /* ============================== STEPS ============================== */
@@ -610,16 +615,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <!-- Add-ons: requested by the owner so the crate price doesn't set the
-           ceiling on what people think they can break. -->
+           ceiling on what people think they can break. Names match the actual
+           add-on options in Bookeo's checkout (verified 2026-07-31) so nobody
+           meets a different list at the payment step. -->
       <div class="addons">
         <h3>Want More To Break?</h3>
-        <p>The admission crate is glass, toys and small household bits. If that isn't enough, we keep extras on hand — just ask when you book or when you arrive.</p>
+        <p>The admission crate is glass, toys and small household bits. If that isn't enough, you can add more when you book — these are the extras we keep on hand.</p>
         <ul>
-          <li><b>TVs and electronics</b> — small, medium and large</li>
-          <li><b>Extra glass</b> — bottles, glassware and plates</li>
+          <li><b>A giant mirror</b> — the one everybody asks for</li>
+          <li><b>A large TV or a computer monitor</b> — the classics</li>
+          <li><b>Electronics</b> — small, medium or large</li>
+          <li><b>10 extra glass items</b> — on top of what's already in the crate</li>
+          <li><b>Liquor &amp; wine bottles</b> — because they shatter beautifully</li>
           <li><b>A case of beer bottles</b> — for the full crate-smashing experience</li>
-          <li><b>A canvas for the paint room</b> — take your painting home with you</li>
         </ul>
+        <p style="margin:1.25rem 0 0;font-size:.9rem">Doing the paint room instead? You can add a <b style="color:var(--bone)">canvas</b> to take your painting home.</p>
       </div>
 
       <p class="fineprint">10% off for active duty, veterans and first responders with valid ID. Gift vouchers available. <a href="https://bookeo.com/wreckitroomvb/buyvoucher?source=lp" target="_blank" rel="noopener" data-track="voucher" style="color:var(--bone)">Buy one here</a>.</p>
