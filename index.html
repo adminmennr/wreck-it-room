@@ -320,9 +320,22 @@ p{margin:0 0 1rem}
 .step h3{margin-top:0}
 
 /* ============================== PROOF ============================== */
-.quotes{display:grid;gap:1.25rem;grid-template-columns:1fr}
-@media(min-width:760px){.quotes{grid-template-columns:repeat(3,1fr)}}
+/* Horizontal scroll-snap track. Native overflow scrolling means it works with
+   touch, trackpad, mouse wheel and keyboard with no JS; the arrows are a
+   progressive enhancement layered on top. */
+.quotes{
+  display:flex;gap:1.25rem;overflow-x:auto;overscroll-behavior-x:contain;
+  scroll-snap-type:x mandatory;scroll-behavior:smooth;
+  padding:.25rem .25rem 1.25rem;margin-inline:-.25rem;
+  scrollbar-width:thin;scrollbar-color:var(--red) var(--ink-3);
+}
+.quotes::-webkit-scrollbar{height:8px}
+.quotes::-webkit-scrollbar-track{background:var(--ink-3);border-radius:999px}
+.quotes::-webkit-scrollbar-thumb{background:rgba(224,27,36,.75);border-radius:999px}
+.quotes::-webkit-scrollbar-thumb:hover{background:var(--red-hot)}
+.quotes:focus-visible{outline:3px solid var(--cyan);outline-offset:4px;border-radius:6px}
 .quote{
+  flex:0 0 min(370px,84%);scroll-snap-align:start;
   background-color:var(--ink-2);background-image:linear-gradient(180deg,var(--ink-2),var(--ink));
   border:1px solid var(--line);border-radius:var(--r);padding:1.6rem;
   display:flex;flex-direction:column;
@@ -333,6 +346,20 @@ p{margin:0 0 1rem}
   margin-top:auto;font-style:normal;font-size:.78rem;font-weight:800;
   letter-spacing:.14em;text-transform:uppercase;color:var(--bone-dim);
 }
+.quote .stars{display:flex;gap:.15rem;margin-bottom:.9rem}
+.quote .stars svg{width:15px;height:15px;color:#FFC53D;flex:none}
+
+.quotes-nav{display:flex;gap:.5rem;justify-content:center;margin-top:.25rem}
+.quotes-nav button{
+  width:44px;height:44px;border-radius:50%;cursor:pointer;
+  background:var(--ink-3);border:1px solid var(--line);color:var(--bone);
+  display:grid;place-items:center;transition:.18s;
+}
+.quotes-nav button:hover:not(:disabled){border-color:var(--bone);background:#26262E}
+.quotes-nav button:disabled{opacity:.3;cursor:default}
+.quotes-nav svg{width:20px;height:20px}
+/* Touch devices scroll by swiping; the arrows would just take up room. */
+@media(hover:none){.quotes-nav{display:none}}
 
 /* ============================== OCCASIONS ============================== */
 .occ{display:flex;flex-wrap:wrap;gap:.65rem;justify-content:center}
@@ -677,19 +704,50 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="eyebrow">From people who booked</p>
       <h2>Straight From The Room</h2>
     </div>
-    <div class="quotes">
+    <!-- All six are real customer reviews: three from the client's Google
+         Business Profile, three collected by Bookeo after the booking.
+         Never add one that isn't genuine — fabricated testimonials are an
+         FTC problem for the client, not just a taste problem. -->
+    <div class="quotes" id="quotes" role="group" aria-label="Customer reviews, scroll horizontally" tabindex="0">
       <article class="quote">
+        <div class="stars" role="img" aria-label="5 out of 5"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <blockquote>Jeremy was awesome and so was our experience — took me, my best friend, and my daughter to do the Beast Mode experience and added on an XL TV and some more bottles. Super clean facility, excellent protective gear, and so many options to choose from to break. Will absolutely be back!!</blockquote>
+        <cite>Katherine Harding</cite>
+      </article>
+      <article class="quote">
+        <div class="stars" role="img" aria-label="5 out of 5"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <blockquote>The place is roomy and the variety of things to smash is fantastic. Where most places have to exclude younger kids, the safe, controlled paint room means everyone can get involved to become a (cleanable) glowing mess — can't wait to schedule birthday parties here!</blockquote>
+        <cite>Ken Carson</cite>
+      </article>
+      <article class="quote">
+        <div class="stars" role="img" aria-label="5 out of 5"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
         <blockquote>Had such a great time!! Owner very professional, love the safety gear. 20 minutes is actually the right amount of time. You can pretty get tired and sweaty.</blockquote>
         <cite>Amy</cite>
       </article>
       <article class="quote">
+        <div class="stars" role="img" aria-label="5 out of 5"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <blockquote>This place just opened last week &amp; it's my fav destruction room in the area! Good prices and great times!</blockquote>
+        <cite>Jennifer Yesness</cite>
+      </article>
+      <article class="quote">
+        <div class="stars" role="img" aria-label="5 out of 5"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
         <blockquote>We had a great time! The staff were amazing.</blockquote>
         <cite>Amber</cite>
       </article>
       <article class="quote">
+        <div class="stars" role="img" aria-label="5 out of 5"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
         <blockquote>Very fun and appreciated the encouragement.</blockquote>
         <cite>Wesley</cite>
       </article>
+    </div>
+
+    <div class="quotes-nav">
+      <button type="button" id="quotesPrev" aria-label="Previous reviews" aria-controls="quotes">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <button type="button" id="quotesNext" aria-label="More reviews" aria-controls="quotes">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
     </div>
   </div>
 </section>
