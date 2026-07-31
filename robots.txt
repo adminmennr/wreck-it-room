@@ -11,3 +11,8 @@
 
 User-agent: *
 Allow: /
+
+# No Sitemap: line on purpose. A sitemap exists to ask Google to index URLs;
+# submitting a noindex URL is a self-contradiction that Search Console reports
+# as "Submitted URL marked noindex". If this page is ever switched to
+# index,follow, add a sitemap then.

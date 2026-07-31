@@ -334,17 +334,52 @@
   }, { passive: true });
 
   // Proxy for "started booking": focus moved into the Bookeo widget iframe.
-  // Soft signal — it misses anyone who interacts without the iframe taking
-  // focus, so treat it as engagement, never as a conversion.
+  //
+  // The widget is cross-origin, so we cannot observe clicks inside it directly.
+  // Two detectors, because neither alone is reliable:
+  //   a) window `blur` — fires when focus leaves the page for the iframe, but
+  //      some browsers don't blur the top window for same-tab iframe focus.
+  //   b) a poll on document.activeElement — catches the case where the iframe
+  //      takes focus without a top-level blur event. Only runs while the
+  //      booking section is on screen, and stops the moment it fires.
+  //
+  // Soft engagement signal. NEVER treat as a conversion — the real one is
+  // Bookeo's own purchase event.
   var bookingStarted = false;
-  window.addEventListener('blur', function () {
-    if (bookingStarted || !mount) return;
+  var checkoutPoll = null;
+
+  function markBookingStarted(how) {
+    if (bookingStarted) return;
+    bookingStarted = true;
+    if (checkoutPoll) { clearInterval(checkoutPoll); checkoutPoll = null; }
+    track('begin_checkout', { method: 'bookeo_widget', product: currentKey, detected_by: how });
+  }
+
+  function iframeHasFocus() {
     var el = document.activeElement;
-    if (el && el.tagName === 'IFRAME' && mount.contains(el)) {
-      bookingStarted = true;
-      track('begin_checkout', { method: 'bookeo_widget', product: currentKey });
-    }
+    return !!(el && el.tagName === 'IFRAME' && mount && mount.contains(el));
+  }
+
+  window.addEventListener('blur', function () {
+    if (iframeHasFocus()) markBookingStarted('blur');
   });
+
+  // Poll only while the booking section is actually visible, so we are not
+  // running a timer for the whole session.
+  if (mount && 'IntersectionObserver' in window && bookSect) {
+    new IntersectionObserver(function (entries) {
+      if (bookingStarted) return;
+      if (entries[0].isIntersecting) {
+        if (!checkoutPoll) {
+          checkoutPoll = setInterval(function () {
+            if (iframeHasFocus()) markBookingStarted('poll');
+          }, 1000);
+        }
+      } else if (checkoutPoll) {
+        clearInterval(checkoutPoll); checkoutPoll = null;
+      }
+    }, { threshold: 0.05 }).observe(bookSect);
+  }
 
   // First view of the booking section.
   if (bookSect && 'IntersectionObserver' in window) {
